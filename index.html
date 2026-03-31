@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light" style=""><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À l'Aube des Ténèbres — 1 An d'Obscurité</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&amp;family=Raleway:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --rouge: #CC0000;
+      --rouge-sombre: #8B0000;
+      --rouge-vif: #FF1A1A;
+      --noir: #050505;
+      --noir-doux: #0D0D0D;
+      --gris-sombre: #111111;
+      --gris: #1A1A1A;
+      --blanc-casse: #E8E0D5;
+      --beige: #C8BAA8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--noir);
+      color: var(--blanc-casse);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ═══ PARTICULES ═══ */
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: var(--rouge);
+      border-radius: 50%;
+      opacity: 0;
+      animation: float-up linear infinite;
+    }
+    @keyframes float-up {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.2; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* ═══ HERO ═══ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      overflow: hidden;
+      z-index: 1;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(139,0,0,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 70%, rgba(80,0,80,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 50% at 50% 100%, rgba(139,0,0,0.12) 0%, transparent 50%);
+      animation: nebula 12s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+    @keyframes nebula {
+      0%   { opacity: 0.7; transform: scale(1) rotate(0deg); }
+      50%  { opacity: 1; transform: scale(1.05) rotate(1deg); }
+      100% { opacity: 0.8; transform: scale(0.98) rotate(-1deg); }
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 200px;
+      background: linear-gradient(to bottom, transparent, var(--noir));
+      z-index: 1;
+    }
+
+    .anniversary-badge {
+      display: inline-block;
+      background: var(--rouge-sombre);
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      padding: 8px 24px;
+      border: 1px solid var(--rouge);
+      margin-bottom: 40px;
+      animation: pulse-badge 2.5s ease-in-out infinite;
+      position: relative;
+      z-index: 2;
+    }
+    @keyframes pulse-badge {
+      0%, 100% { box-shadow: 0 0 8px var(--rouge-sombre), 0 0 20px rgba(139,0,0,0.3); }
+      50% { box-shadow: 0 0 18px var(--rouge), 0 0 40px rgba(204,0,0,0.5); }
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 6.5rem);
+      line-height: 1.05;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blanc-casse);
+      position: relative;
+      z-index: 2;
+      animation: glitch 6s ease-in-out infinite;
+    }
+    .hero-title span.rouge { color: var(--rouge-vif); }
+
+    @keyframes glitch {
+      0%, 94%, 100% { text-shadow: 0 0 30px rgba(204,0,0,0.4); transform: translate(0); }
+      95% {
+        text-shadow: -3px 0 var(--rouge), 3px 0 rgba(0,200,255,0.5);
+        transform: translate(-2px, 0);
+      }
+      96% {
+        text-shadow: 3px 0 var(--rouge), -3px 0 rgba(0,200,255,0.5);
+        transform: translate(2px, 0);
+      }
+      97% {
+        text-shadow: -3px 0 rgba(0,200,255,0.5), 3px 0 var(--rouge);
+        transform: translate(0, -1px);
+      }
+      98% {
+        text-shadow: 0 0 30px rgba(204,0,0,0.4);
+        transform: translate(0);
+      }
+    }
+
+    .hero-subtitle {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: var(--beige);
+      margin-top: 20px;
+      letter-spacing: 2px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-tagline {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.85rem, 2vw, 1.1rem);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--rouge);
+      margin-top: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Countdown */
+    .countdown-wrapper {
+      margin: 50px 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+    .countdown-label {
+      font-size: 0.7rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--rouge);
+      font-family: 'Cinzel', serif;
+      margin-bottom: 16px;
+    }
+    .countdown {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .countdown-unit {
+      text-align: center;
+      min-width: 70px;
+    }
+    .countdown-number {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      color: var(--blanc-casse);
+      line-height: 1;
+      display: block;
+      text-shadow: 0 0 20px rgba(204,0,0,0.4);
+    }
+    .countdown-text {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rouge);
+      margin-top: 6px;
+      display: block;
+    }
+    .countdown-sep {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: var(--rouge-sombre);
+      align-self: center;
+      margin-top: -10px;
+    }
+
+    .cta-hero {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--rouge-sombre), var(--rouge));
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 48px;
+      border: 1px solid var(--rouge);
+      margin-top: 10px;
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    .cta-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    .cta-hero:hover::before { left: 100%; }
+    .cta-hero:hover {
+      background: linear-gradient(135deg, var(--rouge), var(--rouge-vif));
+      box-shadow: 0 0 30px rgba(204,0,0,0.6), 0 0 60px rgba(204,0,0,0.3);
+      transform: translateY(-2px);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      animation: bounce 2s ease-in-out infinite;
+      color: var(--rouge-sombre);
+      font-size: 1.5rem;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ═══ STATS ═══ */
+    #stats {
+      position: relative;
+      z-index: 1;
+      background: var(--gris-sombre);
+      padding: 70px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(139,0,0,0.4);
+      border-bottom: 1px solid rgba(139,0,0,0.4);
+    }
+    .stats-grid {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .stat-item {
+      flex: 1;
+      min-width: 200px;
+      padding: 30px 20px;
+      border-right: 1px solid rgba(139,0,0,0.25);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-item.visible { opacity: 1; transform: translateY(0); }
+    .stat-number {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 900;
+      color: var(--rouge-vif);
+      display: block;
+      line-height: 1;
+      text-shadow: 0 0 20px rgba(204,0,0,0.4);
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--beige);
+      margin-top: 10px;
+      display: block;
+      font-family: 'Cinzel', serif;
+    }
+
+    /* ═══ SECTIONS GÉNÉRALES ═══ */
+    section { position: relative; z-index: 1; }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 40px;
+    }
+
+    .section-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--rouge);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--blanc-casse);
+      line-height: 1.1;
+      margin-bottom: 30px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ═══ LIVRE + RÉSUMÉ ═══ */
+    #livre { background: var(--noir-doux); }
+    .livre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .book-3d {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .book-inner {
+      position: relative;
+      transition: transform 0.6s ease;
+      transform-style: preserve-3d;
+    }
+    .book-3d:hover .book-inner {
+      transform: rotateY(-15deg) rotateX(5deg);
+    }
+    .book-cover {
+      width: 100%;
+      max-width: 320px;
+      display: block;
+      margin: 0 auto;
+      border: none;
+      box-shadow:
+        -8px 8px 0 rgba(139,0,0,0.5),
+        -16px 16px 0 rgba(139,0,0,0.25),
+        -24px 24px 40px rgba(0,0,0,0.9);
+      transition: box-shadow 0.4s ease;
+    }
+    .book-3d:hover .book-cover {
+      box-shadow:
+        -12px 12px 0 rgba(204,0,0,0.6),
+        -24px 24px 0 rgba(139,0,0,0.35),
+        -36px 36px 60px rgba(0,0,0,0.95),
+        0 0 40px rgba(204,0,0,0.2);
+    }
+    .book-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--rouge-sombre), #4B0000);
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 4px;
+      padding: 5px 14px;
+      border: 1px solid var(--rouge-sombre);
+      margin-bottom: 20px;
+    }
+    .book-resume {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--beige);
+      font-style: italic;
+      border-left: 2px solid var(--rouge-sombre);
+      padding-left: 24px;
+      margin: 24px 0;
+    }
+    .book-meta {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: rgba(200,186,168,0.5);
+      margin-top: 30px;
+    }
+    .book-meta span { color: var(--rouge); }
+
+    /* ═══ CITATION CHOC ═══ */
+    #citation {
+      background: linear-gradient(135deg, var(--rouge-sombre) 0%, #4B0000 50%, var(--rouge-sombre) 100%);
+      padding: 0;
+    }
+    .citation-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 100px 40px;
+      text-align: center;
+    }
+    .grande-citation {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.4rem, 4vw, 2.8rem);
+      font-weight: 600;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.4;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+    .citation-trait {
+      width: 80px;
+      height: 2px;
+      background: rgba(255,255,255,0.4);
+      margin: 30px auto;
+    }
+    .citation-auteur {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ═══ UNIVERS ═══ */
+    #univers { background: var(--noir); }
+    .univers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+    }
+    .univers-card {
+      background: var(--gris-sombre);
+      padding: 50px 34px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      border-top: 1px solid rgba(139,0,0,0.2);
+    }
+    .univers-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--rouge), transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    .univers-card:hover::before { transform: scaleX(1); }
+    .univers-card:hover {
+      background: rgba(139,0,0,0.08);
+      transform: translateY(-4px);
+    }
+    .card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      display: block;
+      filter: drop-shadow(0 0 10px rgba(204,0,0,0.4));
+    }
+    .card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blanc-casse);
+      margin-bottom: 14px;
+    }
+    .card-text {
+      font-size: 0.9rem;
+      color: rgba(200,186,168,0.7);
+      line-height: 1.7;
+    }
+
+    /* ═══ AUTEUR ═══ */
+    #auteur {
+      background: var(--gris-sombre);
+      border-top: 1px solid rgba(139,0,0,0.3);
+    }
+    .auteur-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .auteur-initiale {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(8rem, 20vw, 16rem);
+      font-weight: 900;
+      color: rgba(139,0,0,0.12);
+      line-height: 1;
+      text-align: center;
+      user-select: none;
+    }
+    .auteur-nom {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 900;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--blanc-casse);
+      margin-bottom: 6px;
+    }
+    .auteur-sous-titre {
+      font-size: 0.7rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--rouge);
+      margin-bottom: 30px;
+      display: block;
+    }
+    .auteur-bio {
+      font-size: 0.95rem;
+      color: var(--beige);
+      line-height: 1.9;
+      margin-bottom: 30px;
+    }
+    .inspirations {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .inspi-tag {
+      background: rgba(139,0,0,0.2);
+      border: 1px solid rgba(139,0,0,0.4);
+      color: var(--rouge);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      padding: 5px 14px;
+      font-family: 'Cinzel', serif;
+      text-transform: uppercase;
+    }
+    .auteur-quote {
+      border-left: 2px solid var(--rouge);
+      padding: 20px 24px;
+      margin-top: 30px;
+      background: rgba(139,0,0,0.05);
+      font-style: italic;
+      color: var(--beige);
+      font-size: 0.95rem;
+    }
+
+    /* ═══ ANNIVERSAIRE ═══ */
+    #anniversaire {
+      background: radial-gradient(ellipse at center, rgba(60,0,60,0.4) 0%, var(--noir) 70%);
+      text-align: center;
+      border-top: 1px solid rgba(139,0,0,0.3);
+      border-bottom: 1px solid rgba(139,0,0,0.3);
+    }
+    .anniv-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 100px 40px;
+    }
+    .anniv-titre {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--blanc-casse);
+      margin: 20px 0;
+    }
+    .anniv-annee {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(4rem, 12vw, 10rem);
+      font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(139,0,0,0.5);
+      line-height: 0.9;
+      display: block;
+      letter-spacing: 10px;
+    }
+    .anniv-texte {
+      font-size: 1rem;
+      color: var(--beige);
+      line-height: 1.9;
+      max-width: 600px;
+      margin: 30px auto;
+    }
+    .anniv-message {
+      font-style: italic;
+      color: rgba(200,186,168,0.6);
+      font-size: 0.9rem;
+      margin-top: 20px;
+    }
+
+    /* ═══ ACHAT ═══ */
+    #achat { background: var(--noir-doux); }
+    .achat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      margin-top: 60px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .achat-card {
+      background: var(--gris);
+      padding: 50px 40px;
+      text-align: center;
+      border: 1px solid rgba(139,0,0,0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .achat-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--rouge-sombre), var(--rouge));
+    }
+    .achat-card:hover {
+      border-color: rgba(204,0,0,0.4);
+      transform: translateY(-3px);
+    }
+    .achat-format {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--rouge);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .achat-prix {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--blanc-casse);
+      line-height: 1;
+      display: block;
+      margin-bottom: 30px;
+    }
+    .achat-cta {
+      display: block;
+      background: linear-gradient(135deg, var(--rouge-sombre), var(--rouge));
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      padding: 16px 30px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+    .achat-cta:hover {
+      background: transparent;
+      border-color: var(--rouge);
+      color: var(--rouge);
+    }
+    .achat-also {
+      text-align: center;
+      margin-top: 40px;
+      color: rgba(200,186,168,0.4);
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .achat-also a {
+      color: rgba(200,186,168,0.5);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(200,186,168,0.2);
+      transition: color 0.3s;
+    }
+    .achat-also a:hover { color: var(--rouge); }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      background: var(--noir);
+      border-top: 1px solid rgba(139,0,0,0.2);
+      padding: 60px 20px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--rouge-sombre);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .footer-tagline {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(200,186,168,0.3);
+      margin: 16px 0;
+    }
+    .footer-info {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: rgba(200,186,168,0.2);
+      margin-top: 30px;
+      line-height: 2;
+    }
+
+    /* ═══ SÉPARATEUR LIGNE ROUGE ═══ */
+    .red-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--rouge), transparent);
+      margin: 20px 0;
+    }
+    .red-line.center { margin: 20px auto; }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 768px) {
+      .livre-grid, .auteur-grid { grid-template-columns: 1fr; gap: 40px; }
+      .univers-grid, .achat-grid { grid-template-columns: 1fr; }
+      .section-inner { padding: 70px 24px; }
+      .stats-grid { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(139,0,0,0.25); }
+      .book-cover { max-width: 220px; }
+      .auteur-initiale { display: none; }
+    }
+  </style>
+</head>
+<body style="">
+
+  <!-- Particules -->
+  <div class="particles" id="particles"><div class="particle" style="width: 3.43212px; height: 3.43212px; left: 51.4857%; animation-duration: 19.5121s; animation-delay: 4.37034s; opacity: 0.441752; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 2.58562px; height: 2.58562px; left: 62.3574%; animation-duration: 17.1002s; animation-delay: 1.95117s; opacity: 0.141096; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 1.62216px; height: 1.62216px; left: 72.0309%; animation-duration: 12.6681s; animation-delay: 7.65669s; opacity: 0.495768; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 2.36449px; height: 2.36449px; left: 4.2656%; animation-duration: 16.3234s; animation-delay: 6.17358s; opacity: 0.438838; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 2.58913px; height: 2.58913px; left: 29.4718%; animation-duration: 17.8278s; animation-delay: 0.646017s; opacity: 0.563018; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 1.90429px; height: 1.90429px; left: 12.7384%; animation-duration: 15.3275s; animation-delay: 8.04457s; opacity: 0.181896; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 2.99093px; height: 2.99093px; left: 8.7644%; animation-duration: 9.11899s; animation-delay: 2.50888s; opacity: 0.381449; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 3.68816px; height: 3.68816px; left: 72.9169%; animation-duration: 12.7191s; animation-delay: 8.2146s; opacity: 0.228503; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 1.72856px; height: 1.72856px; left: 92.0817%; animation-duration: 11.5238s; animation-delay: 9.39698s; opacity: 0.558619; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 3.45565px; height: 3.45565px; left: 92.8084%; animation-duration: 17.9044s; animation-delay: 0.442424s; opacity: 0.408608; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 3.62093px; height: 3.62093px; left: 32.0268%; animation-duration: 18.3001s; animation-delay: 2.71217s; opacity: 0.534921; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 3.30606px; height: 3.30606px; left: 5.96277%; animation-duration: 8.2883s; animation-delay: 8.53868s; opacity: 0.432948; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 1.31888px; height: 1.31888px; left: 47.2582%; animation-duration: 15.9607s; animation-delay: 2.52847s; opacity: 0.564952; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 3.04462px; height: 3.04462px; left: 94.9452%; animation-duration: 8.09299s; animation-delay: 4.70411s; opacity: 0.222978; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 3.25033px; height: 3.25033px; left: 72.1497%; animation-duration: 14.2826s; animation-delay: 3.97643s; opacity: 0.517978; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 2.37883px; height: 2.37883px; left: 46.3057%; animation-duration: 19.7327s; animation-delay: 3.6719s; opacity: 0.355453; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 1.4678px; height: 1.4678px; left: 11.4312%; animation-duration: 9.52879s; animation-delay: 2.48555s; opacity: 0.556024; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 2.83563px; height: 2.83563px; left: 95.1659%; animation-duration: 19.8092s; animation-delay: 8.9953s; opacity: 0.178021; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 2.52975px; height: 2.52975px; left: 70.0303%; animation-duration: 9.87878s; animation-delay: 9.79862s; opacity: 0.153513; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 2.05492px; height: 2.05492px; left: 66.5333%; animation-duration: 9.70882s; animation-delay: 0.788524s; opacity: 0.514919; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 3.15002px; height: 3.15002px; left: 96.9325%; animation-duration: 19.4312s; animation-delay: 8.32369s; opacity: 0.318951; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 2.80681px; height: 2.80681px; left: 44.5108%; animation-duration: 12.8274s; animation-delay: 7.88636s; opacity: 0.187338; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 1.11361px; height: 1.11361px; left: 11.8004%; animation-duration: 11.3369s; animation-delay: 0.99925s; opacity: 0.12786; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 3.04397px; height: 3.04397px; left: 37.8177%; animation-duration: 13.7161s; animation-delay: 9.98771s; opacity: 0.544255; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 2.66531px; height: 2.66531px; left: 45.1438%; animation-duration: 13.9786s; animation-delay: 7.02728s; opacity: 0.192584; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 1.46175px; height: 1.46175px; left: 32.9538%; animation-duration: 12.2062s; animation-delay: 7.62232s; opacity: 0.517409; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 2.08339px; height: 2.08339px; left: 74.2454%; animation-duration: 10.496s; animation-delay: 2.33815s; opacity: 0.204081; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 3.31794px; height: 3.31794px; left: 20.9607%; animation-duration: 16.3702s; animation-delay: 5.19365s; opacity: 0.291164; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 3.24971px; height: 3.24971px; left: 94.6136%; animation-duration: 15.2303s; animation-delay: 5.56723s; opacity: 0.157519; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 3.1136px; height: 3.1136px; left: 8.49953%; animation-duration: 18.4694s; animation-delay: 5.78485s; opacity: 0.276374; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 3.4777px; height: 3.4777px; left: 53.3402%; animation-duration: 17.4565s; animation-delay: 8.22042s; opacity: 0.28513; background: rgba(200, 186, 168, 0.4);"></div><div class="particle" style="width: 3.99498px; height: 3.99498px; left: 18.7273%; animation-duration: 17.7464s; animation-delay: 1.59914s; opacity: 0.350989; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 2.01892px; height: 2.01892px; left: 78.0924%; animation-duration: 17.5346s; animation-delay: 0.922576s; opacity: 0.197469; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 2.36665px; height: 2.36665px; left: 71.9311%; animation-duration: 17.0476s; animation-delay: 5.46847s; opacity: 0.106699; background: rgb(204, 0, 0);"></div><div class="particle" style="width: 2.83898px; height: 2.83898px; left: 80.1659%; animation-duration: 17.0054s; animation-delay: 5.12724s; opacity: 0.257779; background: rgb(204, 0, 0);"></div></div>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero">
+    <span class="anniversary-badge">✦ 1 An Déjà ✦</span>
+    <h1 class="hero-title">À l'<span class="rouge">Aube</span><br>des Ténèbres</h1>
+    <p class="hero-subtitle">Un recueil qui a hanté ses lecteurs pendant 365 nuits</p>
+    <p class="hero-tagline">— Anthony PERES —</p>
+
+    <div class="countdown-wrapper">
+      <p class="countdown-label">✦ Anniversaire dans ✦</p>
+      <div class="countdown" id="countdown">
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-days">59</span>
+          <span class="countdown-text">Jours</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-hours">00</span>
+          <span class="countdown-text">Heures</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-mins">34</span>
+          <span class="countdown-text">Minutes</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-secs">15</span>
+          <span class="countdown-text">Secondes</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="https://www.echo-editions.fr/librairie/livre?id=300&amp;t=a-lrsquoaube-des-teacutenegravebres" class="cta-hero" target="_blank">
+      Plongez dans les ténèbres &nbsp;→
+    </a>
+
+    <div class="scroll-hint">↓</div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <section id="stats">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <span class="stat-number" data-target="7">0</span>
+        <span class="stat-label">Nouvelles</span>
+      </div>
+      <div class="stat-item reveal" style="transition-delay:0.15s">
+        <span class="stat-number" data-target="165">0</span>
+        <span class="stat-label">Pages d'effroi</span>
+      </div>
+      <div class="stat-item reveal" style="transition-delay:0.3s">
+        <span class="stat-number" data-target="365">0</span>
+        <span class="stat-label">Jours de cauchemars</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LIVRE + RÉSUMÉ ═══ -->
+  <section id="livre">
+    <div class="section-inner">
+      <div class="livre-grid">
+        <div class="reveal">
+          <div class="book-3d">
+            <div class="book-inner">
+              <img class="book-cover" src="https://sspark.genspark.ai/cfimages?u1=OxWrmBTWjj4PPLOKzSUWq%2FmSQAgiplYP7hmglGSWvauQ6zFyaGOcQmxgcIgSuAHTLyo0me3k8FEPv2pbdfM3FghPBGCO9i%2BgHrwiqlHMbs6%2BgF37kQ3MPZS%2FLxwP%2FAiL609zhV3v7%2BHS9gzDwtciPBFnsYV%2B2eqB%2FaSkXO8vG%2F%2BCUlMWSXBZ%2B1iT7aDQHQ%3D%3D&amp;u2=r%2FOildEKxUDIZ1C3&amp;width=2560" alt="Couverture — À l'aube des ténèbres" data-height-listener-added="true">
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal" style="transition-delay:0.2s">
+          <span class="section-tag">✦ Le Recueil</span>
+          <h2 class="section-title">Quand l'ombre<br>prend vie...</h2>
+          <div class="red-line"></div>
+          <span class="book-badge">Fantasy Horrifique</span>
+          <p class="book-resume">
+            Quand la nuit tombe et que les ombres s'étirent, des histoires oubliées s'éveillent.
+            Dans ces pages, vous rencontrerez des âmes perdues, des rituels interdits et des créatures
+            tapies au seuil de notre réalité. D'un manoir hanté par une présence invisible à une mer
+            en furie recelant des secrets enfouis, chaque nouvelle vous entraîne dans un cauchemar
+            où la frontière entre le réel et l'impossible s'efface.
+          </p>
+          <p class="book-meta">
+            <span>ECHO Éditions</span> &nbsp;·&nbsp; 30 mai 2025 &nbsp;·&nbsp; 14,8×21 cm &nbsp;·&nbsp; <span>165 pages</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CITATION CHOC ═══ -->
+  <section id="citation">
+    <div class="citation-inner reveal">
+      <p class="grande-citation">
+        « Oserez-vous tourner la page<br>et affronter l'aube des ténèbres ? »
+      </p>
+      <div class="citation-trait"></div>
+      <span class="citation-auteur">Anthony PERES</span>
+    </div>
+  </section>
+
+  <!-- ═══ UNIVERS ═══ -->
+  <section id="univers">
+    <div class="section-inner">
+      <div class="reveal" style="text-align:center">
+        <span class="section-tag">✦ L'Univers</span>
+        <h2 class="section-title">Trois portes vers l'effroi</h2>
+        <div class="red-line center"></div>
+      </div>
+      <div class="univers-grid">
+        <div class="univers-card reveal" style="transition-delay:0.1s">
+          <span class="card-icon">🕯️</span>
+          <h3 class="card-title">Rituels Occultes</h3>
+          <p class="card-text">Des cérémonies interdites qui éveillent ce qui ne devrait jamais l'être. La curiosité humaine, arme fatale contre elle-même.</p>
+        </div>
+        <div class="univers-card reveal" style="transition-delay:0.25s">
+          <span class="card-icon">🌊</span>
+          <h3 class="card-title">Gouffres Insondables</h3>
+          <p class="card-text">D'une mer en furie aux manoirs hantés — chaque décor devient une prison. L'environnement lui-même conspire contre vous.</p>
+        </div>
+        <div class="univers-card reveal" style="transition-delay:0.4s">
+          <span class="card-icon">🧠</span>
+          <h3 class="card-title">Horreur Psychologique</h3>
+          <p class="card-text">La frontière entre le réel et l'impossible s'efface... et vous avec elle. Les ténèbres les plus profondes sont intérieures.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ AUTEUR ═══ -->
+  <section id="auteur">
+    <div class="section-inner">
+      <div class="auteur-grid">
+        <div class="reveal">
+          <div class="auteur-initiale">A</div>
+        </div>
+        <div class="reveal" style="transition-delay:0.2s">
+          <span class="section-tag">✦ L'Auteur</span>
+          <h2 class="auteur-nom">Anthony PERES</h2>
+          <span class="auteur-sous-titre">Dans l'ombre depuis toujours</span>
+          <div class="red-line"></div>
+          <p class="auteur-bio">
+            Fasciné par les aspects les plus sombres de l'âme humaine, Anthony Peres écrit dans la lignée
+            des maîtres de l'horreur. Son imagination nourrie par des années de cinéma d'effroi et de
+            littérature fantastique lui permet d'explorer les zones grises de l'esprit humain avec une
+            précision chirurgicale et une atmosphère oppressante incomparable.
+          </p>
+          <p class="auteur-bio" style="margin-bottom:0">
+            Des forêts mystérieuses de Brocéliande aux couloirs labyrinthiques des séries qu'il dévore,
+            l'auteur puise son inspiration dans tout ce qui trouble, déstabilise et fascine.
+          </p>
+          <div class="inspirations">
+            <span class="inspi-tag">Stephen King</span>
+            <span class="inspi-tag">H.P. Lovecraft</span>
+            <span class="inspi-tag">X-Files</span>
+            <span class="inspi-tag">Severance</span>
+            <span class="inspi-tag">Brocéliande</span>
+          </div>
+          <div class="auteur-quote">
+            « Si vous êtes prêts à plonger dans un monde où l'inconnu est roi, où chaque coin sombre
+            cache un secret, et où chaque personnage se retrouve confronté à ses peurs les plus profondes —
+            <strong>La nuit ne fait que commencer.</strong> »
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ANNIVERSAIRE ═══ -->
+  <section id="anniversaire">
+    <div class="anniv-inner reveal">
+      <span class="section-tag">✦ 30 Mai 2025 → 30 Mai 2026 ✦</span>
+      <span class="anniv-annee">I</span>
+      <h2 class="anniv-titre">Un An Dans les Ténèbres</h2>
+      <div class="red-line center"></div>
+      <p class="anniv-texte">
+        Il y a un an, Anthony Peres ouvrait une porte que certains auraient préféré ne jamais
+        voir s'entrouvrir. Aujourd'hui, nous célébrons <strong>365 jours de frissons, de
+        cauchemars et de fascination</strong>. Ce premier anniversaire marque la consécration
+        d'un recueil devenu une référence pour les amateurs de terreur littéraire.
+      </p>
+      <p class="anniv-message">
+        « Merci à vous, lecteurs, de faire partie de ce voyage vers les ténèbres. »<br>
+        <em>— Anthony PERES</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ ACHAT ═══ -->
+  <section id="achat">
+    <div class="section-inner">
+      <div style="text-align:center" class="reveal">
+        <span class="section-tag">✦ Votre Exemplaire</span>
+        <h2 class="section-title">Rejoignez<br>l'obscurité</h2>
+        <div class="red-line center"></div>
+      </div>
+      <div class="achat-grid">
+        <div class="achat-card reveal" style="transition-delay:0.15s">
+          <span class="achat-format">📖 &nbsp; Broché</span>
+          <span class="achat-prix">17,95 €</span>
+          <a href="https://www.echo-editions.fr/librairie/livre?id=300&amp;t=a-lrsquoaube-des-teacutenegravebres" class="achat-cta" target="_blank">Commander maintenant</a>
+        </div>
+        <div class="achat-card reveal" style="transition-delay:0.3s">
+          <span class="achat-format">📱 &nbsp; ePub</span>
+          <span class="achat-prix">7,99 €</span>
+          <a href="https://www.echo-editions.fr/librairie/livre?id=300&amp;t=a-lrsquoaube-des-teacutenegravebres" class="achat-cta" target="_blank">Télécharger</a>
+        </div>
+      </div>
+      <p class="achat-also reveal" style="transition-delay:0.45s; margin-top:40px">
+        Disponible aussi sur &nbsp;
+        <a href="https://www.fnac.com/a21530755/Anthony-Peres-A-l-aube-des-tenebres" target="_blank">la FNAC</a>
+        &nbsp; et en librairie
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <span class="footer-logo">ECHO Éditions</span>
+    <p class="footer-tagline">« La nuit ne fait que commencer. »</p>
+    <div class="red-line center"></div>
+    <p class="footer-info">
+      © Anthony PERES — ECHO Éditions &nbsp;·&nbsp; ISBN : 978-2-381024-78-3<br>
+      Page promotionnelle — Premier anniversaire de parution, 30 mai 2026
+    </p>
+  </footer>
+
+  <!-- ═══ JAVASCRIPT ═══ -->
+  <script>
+    // --- Particules ---
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 35; i++) {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      const size = Math.random() * 3 + 1;
+      p.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        left: ${Math.random() * 100}%;
+        animation-duration: ${Math.random() * 12 + 8}s;
+        animation-delay: ${Math.random() * 10}s;
+        opacity: ${Math.random() * 0.5 + 0.1};
+        background: ${Math.random() > 0.6 ? '#CC0000' : 'rgba(200,186,168,0.4)'};
+      `;
+      container.appendChild(p);
+    }
+
+    // --- Countdown ---
+    function updateCountdown() {
+      const target = new Date('2026-05-30T00:00:00');
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-mins').textContent = '00';
+        document.getElementById('cd-secs').textContent = '00';
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+      document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+      document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
+      document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // --- Scroll Reveal + Compteurs ---
+    const reveals = document.querySelectorAll('.reveal');
+    const stats = document.querySelectorAll('.stat-item');
+
+    function animateNumber(el, target, duration = 1800) {
+      const start = performance.now();
+      const update = (time) => {
+        const elapsed = time - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target);
+        if (progress < 1) requestAnimationFrame(update);
+      };
+      requestAnimationFrame(update);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const num = entry.target.querySelector('.stat-number[data-target]');
+          if (num && !num.dataset.animated) {
+            num.dataset.animated = 'true';
+            animateNumber(num, parseInt(num.dataset.target));
+          }
+        }
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(el => observer.observe(el));
+    stats.forEach(el => observer.observe(el));
+  </script>
+
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body></html>
